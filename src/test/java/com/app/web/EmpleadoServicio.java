@@ -50,4 +50,28 @@ public class EmpleadoServicio {
         Assertions.assertEquals("maria.rodriguez@pragma.com.co", listaDeEmpleados.get(2).getEmail());
     }
 
+    @Test
+    public void crearEmpleado() {
+        // Creamos un objeto Empleado sin ID
+        Empleado empleadoACrear = new Empleado("Juan", "Perez", "
+                juan.perez@pragma.com.co
+        ");
+
+        // Verificamos que el método save() del repositorio haya sido llamado con el objeto Empleado correcto
+        Mockito.when(
+                repositorio.save
+                        (empleadoACrear)).thenReturn(empleadoACrear);
+
+        // Llamamos al método crearEmpleado() del servicio
+        Empleado empleadoCreado = empleadoServicio.crearEmpleado(empleadoACrear);
+
+        // Verificamos que el objeto devuelto tenga un ID generado automáticamente
+        Assertions.assertNotNull(empleadoCreado.getId());
+
+        // Verificamos que el objeto devuelto tenga los mismos valores que el objeto original
+        Assertions.assertEquals(empleadoCreado.getNombre(), empleadoACrear.getNombre());
+        Assertions.assertEquals(empleadoCreado.getApellido(), empleadoACrear.getApellido());
+        Assertions.assertEquals(empleadoCreado.getEmail(), empleadoACrear.getEmail());
+    }
+
 }
