@@ -53,9 +53,7 @@ public class EmpleadoServicio {
     @Test
     public void crearEmpleado() {
         // Creamos un objeto Empleado sin ID
-        Empleado empleadoACrear = new Empleado("Juan", "Perez", "
-                juan.perez@pragma.com.co
-        ");
+        Empleado empleadoACrear = new Empleado("Juan", "Perez", "juan.perez@pragma.com.co");
 
         // Verificamos que el método save() del repositorio haya sido llamado con el objeto Empleado correcto
         Mockito.when(
@@ -63,7 +61,7 @@ public class EmpleadoServicio {
                         (empleadoACrear)).thenReturn(empleadoACrear);
 
         // Llamamos al método crearEmpleado() del servicio
-        Empleado empleadoCreado = empleadoServicio.crearEmpleado(empleadoACrear);
+        Empleado empleadoCreado = empleadoServicio.guardarEmpleado(empleadoACrear);
 
         // Verificamos que el objeto devuelto tenga un ID generado automáticamente
         Assertions.assertNotNull(empleadoCreado.getId());
@@ -77,13 +75,11 @@ public class EmpleadoServicio {
     @Test
     public void editarEmpleado() {
         // Editamos un objeto Empleado sin ID
-        Empleado empleadoAEditar = new Empleado("Juan", "Perez", "
-                juan.perez@pragma.com.co
-        ");
+        Empleado empleadoAEditar = new Empleado("Juan", "Perez", "juan.perez@pragma.com.co");
 
         // Verificamos que el método edit() del repositorio haya sido llamado con el objeto Empleado correcto
         Mockito.when(
-                repositorio.edit
+                repositorio.save
                         (empleadoAEditar)).thenReturn(empleadoAEditar);
 
         // Llamamos al método editarEmpleado() del servicio
