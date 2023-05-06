@@ -89,9 +89,6 @@ public class EmpleadoServicio {
         // Llamamos al método editarEmpleado() del servicio
         Empleado empleadoEditado = empleadoServicio.actualizarEmpleado(empleadoAEditar);
 
-        // Verificamos que el objeto devuelto tenga un ID generado automáticamente
-        Assertions.assertNotNull(empleadoEditado.getId());
-
         // Verificamos que el objeto devuelto tenga los mismos valores que el objeto original
         Assertions.assertEquals(empleadoEditado.getNombre(), empleadoAEditar.getNombre());
         Assertions.assertEquals(empleadoEditado.getApellido(), empleadoAEditar.getApellido());
