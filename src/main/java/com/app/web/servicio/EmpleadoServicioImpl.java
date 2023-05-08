@@ -21,23 +21,51 @@ public class EmpleadoServicioImpl implements EmpleadoServicio {
 
 	@Override
 	public Empleado guardarEmpleado(Empleado empleado) {
-		return repositorio.save(empleado);
+		if(empleado != null) {
+			return repositorio.save(empleado);
+		} else {
+			return null;
+		}
 	}
 
 	@Override
 	public Empleado obtenerEmpleadoPorId(Long id) {
+		if (id!=null){
 		return repositorio.findById(id).get();
+		} else {
+			return null;
+		}
+	}
+
+	@Override
+	public Empleado obtenerEmpleadoPorCorreo(String correo) {
+		if (correo != null){
+			return repositorio.getEmpleadoPorCorreo(correo);
+		}
+		return null;
 	}
 
 	@Override
 	public Empleado actualizarEmpleado(Empleado empleado) {
+		if(empleado!=null){
 		return repositorio.save(empleado);
+		} else {
+			return null;
+		}
 	}
 
 	@Override
-	public void eliminarEmpleado(Long id) {
-		repositorio.deleteById(id);
-
+	public String eliminarEmpleado(Long id) {
+		if(id!=null) {
+			try {
+			repositorio.deleteById(id);
+			return "Borrado Exitoso";
+			}
+			catch (Exception e){
+				return "Borrado Fallido";
+			}
+		}
+		return "Borrado Fallido";
 	}
 
 }

@@ -12,7 +12,9 @@ public interface EmpleadoServicio {
 	
 	public Empleado obtenerEmpleadoPorId(Long id);
 
+	public Empleado obtenerEmpleadoPorCorreo(String correo);
+
 	public Empleado actualizarEmpleado(Empleado empleado);
 	
-	public void eliminarEmpleado(Long id);
+	public String eliminarEmpleado(Long id);
 }
